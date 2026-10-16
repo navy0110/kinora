@@ -39,3 +39,7 @@ Subsequent verification October 14, 2026:
 - System creator: `0x2Fd1001bC60849576D8c8b698220B546f0B7f544`, matching the registered community creator.
 
 The live entity is classified as Authorized organizer by the independent reader's contract implementation; the publisher's pure authorization function also returns true for the live creator/community pair. This check verifies current chain data and both authorization functions, not a screenshot of both interfaces. The earlier unbound event still classifies as Independent publisher. Delegated organizer grant/revoke remains tested automatically only, without wallet-signed end-to-end transactions.
+
+## Public independent reader verified
+
+October 16, 2026: https://kinora-reader.atom139139.workers.dev/?community=builders-sur loaded in a fresh browser and reported two active publications read directly from Tiramisu. Both entity keys above were present, with the same creator address. The first was labeled Independent publisher and the second Authorized organizer. No uncaught browser exceptions were observed. Root HTML, reader.js, authority.js and style.css each returned HTTP 200 with their expected content types. This verifies the public reader; the publisher is not publicly deployed yet.

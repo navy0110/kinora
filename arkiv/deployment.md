@@ -1,8 +1,8 @@
 # Kinora deployment handoff
 
-Status: local preparation only. No public deployment is recorded yet.
+Status: independent reader published at https://kinora-reader.atom139139.workers.dev/. Publisher deployment on Vercel is pending.
 
-## 1. Independent reader — Cloudflare Pages
+## 1. Independent reader — Cloudflare
 
 From the Kinora project directory run `npm run build:reader`. Upload only the resulting `reader-dist/` directory through Cloudflare Pages Direct Upload. No build command, wallet, environment variables or API credentials are required by this site. Use a separate Pages project, for example `kinora-reader` if available.
 
@@ -20,7 +20,7 @@ Create a separate Vercel project for Kinora. Use this application's directory as
 - Static output: `out/` (the project uses `output: 'export'`).
 - Environment variable: `NEXT_PUBLIC_READER_URL` = the actual HTTPS root URL of the Cloudflare reader, with a trailing slash. Set it for each deployment environment being tested, before the build.
 
-This variable is public and embedded at build time. Changing it requires a new deployment. Without it the production app falls back to its bundled `/reader/` route, which does not prove separate-host independence.
+This variable is public and embedded at build time. Changing it requires a new deployment. Without an override the app uses the published Cloudflare reader URL above. The bundled `/reader/` route remains available as a reference UI.
 
 No Supabase, wallet secret, private key or Arkiv write key is required. Users sign from their own wallet. Leave both deployments publicly accessible to judges.
 
@@ -35,3 +35,5 @@ No Supabase, wallet secret, private key or Arkiv write key is required. Users si
 7. Add actual deployment URLs and observed results to evidence.md. Do not mark deployment complete from a successful build alone.
 
 Official setup references: https://developers.cloudflare.com/pages/get-started/direct-upload/ and https://vercel.com/docs/frameworks/full-stack/nextjs.
+
+Observed October 16, 2026: root HTML, reader.js, authority.js and style.css returned HTTP 200 with the expected file content and MIME types on the supplied workers.dev origin. This is a Cloudflare Workers static deployment, rather than a pages.dev deployment; it can serve the same independent reader. Browser data checks are recorded in evidence.md separately.

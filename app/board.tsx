@@ -30,7 +30,7 @@ export default function Board() {
       if (saved && /^0x[\da-f]{64}$/i.test(saved.entityKey) && /^0x[\da-f]{64}$/i.test(saved.txHash) && /^0x[\da-f]{40}$/i.test(saved.creator) && /^[a-z0-9-]{3,40}$/.test(saved.community)) setEvidence(saved);
     } catch { /* Local evidence is optional. */ }
   }, []);
-  const independentReader = process.env.NEXT_PUBLIC_READER_URL || (process.env.NODE_ENV === 'development' ? 'http://localhost:3101/' : '/reader/');
+  const independentReader = process.env.NEXT_PUBLIC_READER_URL || 'https://kinora-reader.atom139139.workers.dev/';
   async function shareCommunity() {
     const url = new URL('/app/', window.location.origin);
     if (community) url.searchParams.set('community', community);
