@@ -1,0 +1,11 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { authorizedPublisher } from '../lib/authority.ts';
+const community = {id:'community-a',creator:'0xOwner'};
+const grant = {communityKey:'community-a',organizer:'0xGuest',action:'grant',creator:'0xOwner',block:10n};
+test('community creator can publish without a grant',()=>assert.equal(authorizedPublisher('0xOWNER',community,[]),true));
+test('a forged grant cannot authorize a publisher',()=>assert.equal(authorizedPublisher('0xGuest',community,[{...grant,creator:'0xAttacker'}]),false));
+test('a grant from another community is not accepted',()=>assert.equal(authorizedPublisher('0xGuest',community,[{...grant,communityKey:'community-b'}]),false));
+test('later revocation removes authorization',()=>assert.equal(authorizedPublisher('0xGuest',community,[grant,{...grant,action:'revoke',block:11n}]),false));
+test('later grant restores authorization',()=>assert.equal(authorizedPublisher('0xGuest',community,[{...grant,action:'revoke'}, {...grant,block:11n}]),true));
+test('same-block conflicting records fail closed',()=>assert.equal(authorizedPublisher('0xGuest',community,[grant,{...grant,action:'revoke'}]),false));

@@ -1,0 +1,10 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { authorityLabel } from '../reader-client/authority.js';
+const c={id:'entity-a',slug:'builders-sur',creator:'owner'};
+const p={communityKey:'entity-a',community:'builders-sur',creator:'guest'};
+const grant={communityKey:'entity-a',organizer:'guest',creator:'owner',action:'grant',block:1n};
+test('independent reader rejects a forged grant',()=>assert.equal(authorityLabel(p,{communities:[c],grants:[{...grant,creator:'attacker'}]}),'Independent publisher'));
+test('same slug with another entity does not borrow its authority',()=>assert.equal(authorityLabel({...p,communityKey:'entity-b'},{communities:[c],grants:[grant]}),'Independent publisher'));
+test('independent reader applies grant and revocation',()=>{assert.equal(authorityLabel(p,{communities:[c],grants:[grant]}),'Authorized organizer');assert.equal(authorityLabel(p,{communities:[c],grants:[grant,{...grant,block:2n,action:'revoke'}]}),'Independent publisher');});
+test('failed registry reads cannot produce an authorized badge',()=>assert.equal(authorityLabel(p,null),'Authorization unavailable'));

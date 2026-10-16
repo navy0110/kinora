@@ -1,0 +1,17 @@
+node_modules/
+.next/
+out/
+.env*
+!.env.example
+*.tsbuildinfo
+
+reader-dist/
+.vercel/
+.wrangler/
+kinora-reader-upload.zip
+
+# Local design tooling and previews
+.taste-skill/
+design-review/
+preview-en.png
+publishing-preview.png
