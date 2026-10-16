@@ -1,5 +1,7 @@
 # Kinora
 
+Live app: https://kinora-community.vercel.app/ · Independent reader: https://kinora-reader.atom139139.workers.dev/
+
 Arkiv-only community events and calls. Independent Next.js project; no Vynx dependencies, environment variables or services. All fixtures are synthetic.
 
 ## Run
@@ -23,7 +25,7 @@ Implemented: publication creation, direct queries, cursor pagination, synthetic 
 
 Community registration and creator-authorized publication were verified with wallet-signed transactions (see `arkiv/evidence.md`). Delegated organizer grant/revoke flows are implemented and covered by automated tests, but still await wallet-signed end-to-end testing. Choose **Manage communities**, register a synthetic community, then select that entity in the publishing form. The creator or authorized organizer can publish with its community key. Both clients verify current authorization from system creators and permission history. Slugs are not globally unique. The first test publication has no community key and remains labeled Independent publisher; a second publication references the registered community and is labeled Authorized organizer. Not yet implemented: publication editing, RSVP, live subscriptions, separate public deployments. Public RPC rate limits can temporarily prevent reads; no credential is embedded.
 
-A synthetic publication was signed by the wallet holder and verified in both clients. The independent reader successfully reloaded the same entity while the publisher server was stopped. Exact transaction, entity key, creator and observed checks: `arkiv/evidence.md`. The independent reader is published at https://kinora-reader.atom139139.workers.dev/. The publisher deployment, demo video and hackathon submission remain pending.
+A synthetic publication was signed by the wallet holder and verified in both clients. The independent reader successfully reloaded the same entity while the publisher server was stopped. Exact transaction, entity key, creator and observed checks: `arkiv/evidence.md`. The independent reader is published at https://kinora-reader.atom139139.workers.dev/. The publisher is live at https://kinora-community.vercel.app/. Demo video and hackathon submission remain pending.
 
 ## Why Arkiv
 

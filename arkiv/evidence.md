@@ -43,3 +43,7 @@ The live entity is classified as Authorized organizer by the independent reader'
 ## Public independent reader verified
 
 October 16, 2026: https://kinora-reader.atom139139.workers.dev/?community=builders-sur loaded in a fresh browser and reported two active publications read directly from Tiramisu. Both entity keys above were present, with the same creator address. The first was labeled Independent publisher and the second Authorized organizer. No uncaught browser exceptions were observed. Root HTML, reader.js, authority.js and style.css each returned HTTP 200 with their expected content types. This verifies the public reader; the publisher is not publicly deployed yet.
+
+## Public publisher verified
+
+October 16, 2026: https://kinora-community.vercel.app/, /app/ and /reader/ each returned HTTP 200 publicly. A fresh browser opened the legacy root community link and reached /app/?source=arkiv&community=builders-sur with both filters preserved. The board retrieved both recorded synthetic entities directly from Tiramisu and displayed Independent publisher and Authorized organizer respectively. Both independent-reader links resolved to the Cloudflare workers.dev origin above. Orange accent was #ff8a3d. At 390px the document had no horizontal overflow; no uncaught browser exceptions were observed. No new wallet transaction was signed as part of this deployment check.

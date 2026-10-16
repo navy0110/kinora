@@ -1,6 +1,6 @@
 # Kinora deployment handoff
 
-Status: independent reader published at https://kinora-reader.atom139139.workers.dev/. Publisher deployment on Vercel is pending.
+Status: independent reader published at https://kinora-reader.atom139139.workers.dev/. Publisher is live at https://kinora-community.vercel.app/. Both public sites were verified on October 16, 2026.
 
 ## 1. Independent reader — Cloudflare
 
