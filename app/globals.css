@@ -24,3 +24,15 @@ h1,h2,h3,.brand{font-family:'DM Sans',Arial,sans-serif}h1,h2,h3{font-weight:700}
 @media(max-width:680px){.board-utilities{gap:0 16px}.board-utilities .community-registry>.wallet{font-size:12px}.board-intro .utility{display:none}.board-intro{padding-top:22px}.board-intro h1{font-size:39px}.board-header{padding-top:16px;padding-bottom:10px}.board-header nav{padding-top:6px;gap:25px}.workspace>aside{padding:8px}.workspace>aside .community{min-height:38px;padding:6px;flex-basis:45%}.workspace>aside .community:first-of-type{flex-basis:45%}.feed-top{align-items:center}.feed h2{font-size:24px;max-width:none}.feed-top .utility{display:none}.source button{padding:9px 6px;font-size:11px}.feed-top>div:first-child{flex:1;min-width:0}}
 footer{color:#515b48}.utility,.network-note,.ticket-coordinate,.ticket-place,.ticket-bottom{font-size:13px}.ticket-place{max-width:90%;line-height:1.4}.ticket-bottom{line-height:1.5}.landing footer{font-size:13px}.dark-ticket .ticket-bottom{padding-right:10px}
 @media(max-width:680px){.ticket-place{font-size:11px}.ticket-bottom{font-size:12px}.landing .utility{font-size:12px}}
+/* Community action toolbar: explicit targets and feedback, shared across screen sizes. */
+.board-utilities{display:flex;gap:10px;flex-wrap:wrap;padding:14px 0 20px;margin:0}
+.board-utilities .board-action,.board-utilities .community-registry>.board-action{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:12px 17px;border:1px solid #bac0b3;background:#e6e9e0;color:var(--ink);font-size:14px;font-weight:600;line-height:1.35;text-decoration:none;border-radius:4px;cursor:pointer}
+.board-utilities .board-action:hover{background:#d9dfd0;border-color:#7b866e;transform:translateY(-2px)}
+.board-utilities .board-action:active{transform:translateY(0);background:#cdd5c2}
+.board-utilities .board-action:disabled{transform:none;cursor:wait;opacity:.6}
+.board-utilities .community-registry{display:contents}
+.board-utilities .community-registry>.board-action-manage{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.board-utilities .community-registry>.board-action-manage:hover{background:var(--accent);color:var(--ink);border-color:var(--accent)}
+.board-action svg{flex-shrink:0}
+@media(prefers-reduced-motion:no-preference){.action-refreshing{animation:action-spin 1.2s linear infinite}@keyframes action-spin{to{transform:rotate(360deg)}}}
+@media(max-width:680px){.board-utilities{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding:12px 0 18px}.board-utilities .board-action,.board-utilities .community-registry>.board-action{padding:12px 10px;font-size:12px;min-height:50px;gap:7px}.board-utilities .board-action svg{width:16px;height:16px}.board-utilities a.board-action svg:last-child{display:none}}
