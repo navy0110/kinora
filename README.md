@@ -42,3 +42,7 @@ Kinora is the application name. The existing `common-ground:v1` protocol namespa
 ## Deployment preparation
 
 Run `npm run build:reader` to prepare the independent Cloudflare Pages upload in `reader-dist/`. The app builds to `out/` for Vercel. Follow `arkiv/deployment.md` to set the actual public reader URL and verify the public pair. Neither site requires Supabase.
+
+## Submission materials
+
+English demo narration and screen directions: [arkiv/demo-script.md](arkiv/demo-script.md). Devfolio field drafts and personal-confirmation notes: [arkiv/devfolio-copy.md](arkiv/devfolio-copy.md). The public video URL and builder declarations must be completed before submission.

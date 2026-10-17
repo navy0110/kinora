@@ -1,6 +1,6 @@
 # Open Community Publication Contract v1
 
-Name is provisional; protocol identifier is versioned independently of branding.
+Application name: Kinora. The protocol identifier is versioned independently of branding.
 
 Network: Tiramisu, chain ID 7738577. SDK pinned by package-lock.json (0.8.1).
 
@@ -10,7 +10,7 @@ JSON payload: community (slug), title (1–100 chars), description (1–2000 cha
 
 Indexed attributes: `protocol` str `common-ground:v1`; `entity_type` str `publication`; `community`, `kind`, `topic`, `mode` str; `starts_at`, `ends_at` u64 milliseconds. Readers validate payloads and check community/end attributes match. Author is the system creator field, never a self-declared payload address.
 
-Immutable creation with `flags.readonly = true`. Expiration uses `ExpirationTime.fromSeconds(ceil((endsAt-now)/1000))`. This duration is converted into blocks by the SDK, so exact wall-clock expiry depends on chain timing. Readers additionally exclude endsAt <= now. Maximum initial lifetime 90 days. No lifetime renewal in this MVP.
+Immutable creation with `flags.readonly = true`. Expiration uses `ExpirationTime.fromBlocks(ceil((endsAt-now)/2000))`. This duration is converted into blocks by the SDK, so exact wall-clock expiry depends on chain timing. Readers additionally exclude endsAt <= now. Maximum initial lifetime 90 days. No lifetime renewal in this MVP.
 
 ## Queries
 
