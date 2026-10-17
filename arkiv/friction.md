@@ -18,12 +18,14 @@ October 14, 2026: the independent static reader on localhost:3101 loaded SDK 0.8
 
 October 14, 2026: wallet holder signed the synthetic event from their own browser. SDK reads confirmed creator, entity, creation block and payload. Both publisher and independent reader displayed it. After stopping the publisher server and confirming port 3100 was closed, reloading the static reader retrieved the same live entity from Tiramisu. The publisher server was restarted. Reproduction and exact identifiers: `evidence.md`.
 
-## Not yet verified
+## Signed community and organizer checks
 
-Community registration and creator-authorized publication were subsequently verified with real wallet-signed transactions; identifiers and chronology are in `evidence.md`. Delegated organizer grant/revoke remains unverified end to end. Seventeen automated tests passed, including forged grants, same-slug different identities, revocation and fail-closed behavior. Automated permission checks do not substitute for signed grant/revoke evidence.
+Community registration and creator-authorized publication were subsequently verified with real wallet-signed transactions; identifiers and chronology are in `evidence.md`. The signed grant, delegated publication and revoke sequence was verified October 17; see evidence.md. Twenty automated tests passed, including forged grants, same-slug different identities, revocation and fail-closed behavior. Automated permission checks do not substitute for signed grant/revoke evidence.
+
+## Remaining verification limits
 
 Wallet chain addition, rejection and insufficient funds with a real extension, and actual expiration. Separate public deployments were verified on October 16, 2026 (Vercel publisher and Cloudflare reader); see evidence.md. Exact wallet extension/browser versions for the user's successful write were not collected. Tests cover nested error interpretation, not real wallet failure behavior.
 
 ## Two-second expiration alignment
 
-October 17, 2026: a delegated publication failed with `Invalid expiry` because `ExpirationTime.fromSeconds(1043903)` represents a fractional number of Tiramisu blocks (521951.5). The app rounded duration to whole seconds instead of whole two-second blocks. Fixed by using `ExpirationTime.fromBlocks(Math.ceil((endsAt - now) / 2000))`. The declared endsAt and read-side expiry predicate remain unchanged. Regression tests reproduce the reported odd-second lifetime, exact and fractional block boundaries, and expired inputs; all 20 tests pass. The exception occurs locally before createEntity sends this publication transaction. A signed retry remains pending.
+October 17, 2026: a delegated publication failed with `Invalid expiry` because `ExpirationTime.fromSeconds(1043903)` represents a fractional number of Tiramisu blocks (521951.5). The app rounded duration to whole seconds instead of whole two-second blocks. Fixed by using `ExpirationTime.fromBlocks(Math.ceil((endsAt - now) / 2000))`. The declared endsAt and read-side expiry predicate remain unchanged. Regression tests reproduce the reported odd-second lifetime, exact and fractional block boundaries, and expired inputs; all 20 tests pass. The exception occurs locally before createEntity sends this publication transaction. The delegated publication subsequently succeeded with the block-aligned expiry; its receipt is in evidence.md.
