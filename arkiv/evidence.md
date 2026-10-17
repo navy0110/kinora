@@ -47,3 +47,9 @@ October 16, 2026: https://kinora-reader.atom139139.workers.dev/?community=builde
 ## Public publisher verified
 
 October 16, 2026: https://kinora-community.vercel.app/, /app/ and /reader/ each returned HTTP 200 publicly. A fresh browser opened the legacy root community link and reached /app/?source=arkiv&community=builders-sur with both filters preserved. The board retrieved both recorded synthetic entities directly from Tiramisu and displayed Independent publisher and Authorized organizer respectively. Both independent-reader links resolved to the Cloudflare workers.dev origin above. Orange accent was #ff8a3d. At 390px the document had no horizontal overflow; no uncaught browser exceptions were observed. No new wallet transaction was signed as part of this deployment check.
+
+## Delegated organizer grant verified
+
+Read-only verification on October 16, 2026: transaction `0xd99937b5a2a1e17fda50231211a8c3a094a2fe11d7a92b7488655c61faf08707` succeeded in block 665059, sent by the registered community creator. Immutable grant entity `0xe97e9f6dffb145f0c0ab2757166373e67d6e0e7186f29b91277c74b5ef8b01e9` references community `0xfc6fb6e300542d2a66d17f0edba07a687d8aa5a1411f17f7cbe112effde9d74d`, organizer `0xA13Dfd06727708D74bcf5db3DB1d725bc59ADEBC`, action `grant`. The publisher authorization function returns true for this organizer against the live permission history. Delegated publication and signed revocation are still pending. The user reported a MetaMask website warning; its cause has not been determined and the grant verification does not resolve that warning.
+
+October 17: user reports the MetaMask warning has been resolved. No independent vendor classification check was performed. The first delegated-publication retry hit the local SDK expiry validation error documented in friction.md; no successful delegated publication has been recorded yet.

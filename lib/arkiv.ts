@@ -6,6 +6,7 @@ import { jsonToPayload } from '@arkiv-network/sdk/utils';
 import { custom, http, formatEther, type EIP1193Provider, type Address } from 'viem';
 import { PROTOCOL, decodePublication, validateDraft, type Draft, type Publication } from './contract';
 import { authorizedPublisher, validateCommunity, type Community, type OrganizerGrant } from './authority';
+import { publicationLifetimeBlocks } from './expiration';
 export const reader = createPublicClient({ chain: tiramisu, transport: http(undefined, { timeout: 15000, retryCount: 1 }) });
 export async function readPublications(community?: string): Promise<Publication[]> {
   const query = reader.select({ key: true, creator: true, payload: true, attributes: true })
@@ -67,7 +68,7 @@ export async function publish(draft: Draft) {
   validateDraft(value);
   const result = await wallet.createEntity({ payload: jsonToPayload(value), contentType: 'application/json', attributes: {
     protocol: str(PROTOCOL), entity_type: str('publication'), community: str(value.community), ...(value.communityKey ? { community_key: str(value.communityKey) } : {}), kind: str(value.kind), topic: str(value.topic), mode: str(value.mode), starts_at: u64(value.startsAt), ends_at: u64(value.endsAt),
-  }, expires: ExpirationTime.fromSeconds(Math.ceil((value.endsAt - Date.now())/1000)), flags: { readonly: true } });
+  }, expires: ExpirationTime.fromBlocks(publicationLifetimeBlocks(value.endsAt)), flags: { readonly: true } });
   return { ...result, creator: account };
 }
 export async function readAuthorities() {

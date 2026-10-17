@@ -36,3 +36,5 @@ Registered publications include optional `communityKey` in payload and `communit
 Client write checks enforce these permissions before asking for publication. Arkiv remains permissionless: an alternative writer can submit unauthorized matching records, so read-side verification is required in every compatible client. Authorized means authorized by this community entity's creator, not independently verified as an external organization.
 
 Both clients fetch the registry and permission entities directly from Arkiv with cursor pagination. If those reads fail, neither client shows an authorized badge. Registry reads are not pinned to a single shared block snapshot yet; changes can appear on the next refresh.
+
+Publication storage lifetime is rounded up to a whole Tiramisu two-second block using `ExpirationTime.fromBlocks`. Readers continue to enforce the exact payload endsAt; block rounding does not extend the displayed event deadline.
